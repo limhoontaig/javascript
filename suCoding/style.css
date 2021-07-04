@@ -1,0 +1,32 @@
+body {
+  font-size: 1em;
+}
+
+div {
+  display:  block;
+  /* width: 300px; */
+  height: 100px;
+  background-color: orangered;
+}
+
+span {
+  display: inline;
+  background-color: lightblue;
+  /* width: 200px;
+  height: 50px; */
+}
+
+section {
+  display: inline;
+  background-color: green;
+  /* width: 200px;
+  height: 50px; */
+}
+
+a {
+  display: inline;
+  background: darkmagenta;
+  /* width: 200px;
+  height: 50px; */
+}
+
