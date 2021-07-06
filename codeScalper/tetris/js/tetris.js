@@ -24,7 +24,7 @@ const movingItem = {
   type: 'tree',
   direction: 0,
   top: 0,
-  left: 0,
+  left: 3,
 };
 
 init()
@@ -55,7 +55,7 @@ function renderBlocks(){
   const movingBlocks = document.querySelectorAll('.moving');
   movingBlocks.forEach(moving => {
     moving.classList.remove(type, 'moving');
-    console.log(moving)
+    // console.log(moving)
   })
   BLOCKS[type][direction].forEach(block => {
     const x = block[0] + left;
@@ -67,9 +67,23 @@ function renderBlocks(){
       target.classList.add(type, 'moving')
     } else {
       tempMovingItem = { ...movingItem };
-      renderBlocks()
+      setTimeout(() => {
+        if(moveType ==='top') {
+          seizeBlock()
+        }
+        renderBlocks();
+      },0)
+      // renderBlocks();
     } 
   })
+  movingItem.left = left;
+  movingItem.top = top;
+  movingItem.direction = direction;
+  
+}
+
+function seizeBlock() {
+  
 }
 
 function checkEmpty(target) {
@@ -85,8 +99,8 @@ function moveBlock(moveType, amount) {
 }
 
 // event handling
-document.addEventListener('keydown', e=> {
-  switch(e.keycode){
+document.addEventListener('keydown', e => {
+  switch(e.keyCode) {
     case 39:
       moveBlock('left', 1);
       break;
