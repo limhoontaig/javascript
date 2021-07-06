@@ -53,9 +53,11 @@ function prependNewLine() {
 function renderBlocks(){
   const { type, direction, top, left } = tempMovingItem;
   BLOCKS[type][direction].forEach(block => {
-    const x = block[0];
-    const y = block[1];
+    const x = block[0] + left;
+    const y = block[1] + top;
     console.log({ playground })
-    const target = playground.childNodes;
+    const target = playground.childNodes[y].childNodes[0].childNodes[x];
+    target.classList.add(type)
   })
 }
+
