@@ -14,17 +14,17 @@ let tempMovingItem;
 const BLOCKS = {
   tree: [
     [[2,1],[0,1],[1,0],[1,1]],
-    [],
-    [],
-    [],
+    [[1,2],[0,1],[1,0],[1,1]],
+    [[1,2],[0,1],[2,1],[1,1]],
+    [[2,1],[0,1],[1,0],[1,1]],
   ]
 }
 
 const movingItem = {
   type: 'tree',
-  direction: 0,
+  direction: 2,
   top: 0,
-  left: 3,
+  left: 0,
 };
 
 init()
@@ -83,7 +83,7 @@ function renderBlocks(){
 }
 
 function seizeBlock() {
-  
+  console.log(seize)
 }
 
 function checkEmpty(target) {
@@ -98,6 +98,16 @@ function moveBlock(moveType, amount) {
   renderBlocks()
 }
 
+function changeDirection() {
+  const direction = tempMovingItem.direction;
+  direction === 3 ? tempMovingItem.direction = 0 : tempMovingItem.direction +=1;
+  renderBlocks()
+  // += 1;
+  // if(tempMovingItem.direction ===4) {
+  //   tempMovingItem.direction = 0;
+  // }; 
+}
+
 // event handling
 document.addEventListener('keydown', e => {
   switch(e.keyCode) {
@@ -109,6 +119,9 @@ document.addEventListener('keydown', e => {
       break;
     case 40:
       moveBlock('top', 1);
+      break;
+    case 38:
+      changeDirection();
       break;
     default:
       break;
