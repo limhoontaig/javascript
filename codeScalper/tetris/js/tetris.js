@@ -1,3 +1,5 @@
+import BLOCKS from './blocks.js'
+
 // DOM
 const playground = document.querySelector('.playground > ul');
 
@@ -11,20 +13,12 @@ let duration = 500;
 let downInterval;
 let tempMovingItem;
 
-const BLOCKS = {
-  tree: [
-    [[2,1],[0,1],[1,0],[1,1]],
-    [[1,2],[0,1],[1,0],[1,1]],
-    [[1,2],[0,1],[2,1],[1,1]],
-    [[2,1],[0,1],[1,0],[1,1]],
-  ]
-}
 
 const movingItem = {
   type: 'tree',
-  direction: 2,
+  direction: 0,
   top: 0,
-  left: 0,
+  left: 3,
 };
 
 init()
@@ -50,17 +44,17 @@ function prependNewLine() {
   playground.prepend(li)
 }
 
-function renderBlocks(){
+function renderBlocks(moveType='') {
   const { type, direction, top, left } = tempMovingItem;
   const movingBlocks = document.querySelectorAll('.moving');
   movingBlocks.forEach(moving => {
     moving.classList.remove(type, 'moving');
     // console.log(moving)
   })
-  BLOCKS[type][direction].forEach(block => {
+  BLOCKS[type][direction].some(block => {
     const x = block[0] + left;
     const y = block[1] + top;
-    // console.log({ playground })
+    console.log(playground.childNodes[y])
     const target = playground.childNodes[y] ? playground.childNodes[y].childNodes[0].childNodes[x] : null;
     const isAvailable = checkEmpty(target);
     if (isAvailable) {
@@ -68,12 +62,13 @@ function renderBlocks(){
     } else {
       tempMovingItem = { ...movingItem };
       setTimeout(() => {
-        if(moveType ==='top') {
+        renderBlocks();
+        if(moveType === 'top') {
           seizeBlock()
         }
-        renderBlocks();
-      },0)
+      }, 0)
       // renderBlocks();
+      return true
     } 
   })
   movingItem.left = left;
@@ -83,11 +78,24 @@ function renderBlocks(){
 }
 
 function seizeBlock() {
-  console.log(seize)
+  const movingBlocks = document.querySelectorAll('.moving');
+  movingBlocks.forEach(moving => {
+    moving.classList.remove('moving');
+    moving.classList.add('seized');
+  })
+  generateNewBlock()
+}
+
+function generateNewBlock() {
+  movingItem.top = 0;
+  movingItem.left = 3;
+  movingItem.direction = 0;
+  tempMovingItem = { ...movingItem };
+  renderBlocks()
 }
 
 function checkEmpty(target) {
-  if(!target) {
+  if(!target || target.classList.contains('seized')) {
     return false;
   }
   return true;
@@ -95,7 +103,7 @@ function checkEmpty(target) {
 
 function moveBlock(moveType, amount) {
   tempMovingItem [moveType] += amount;
-  renderBlocks()
+  renderBlocks(moveType)
 }
 
 function changeDirection() {
