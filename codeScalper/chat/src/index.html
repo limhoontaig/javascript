@@ -7,9 +7,20 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Hello</h1>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js" integrity="sha512-iZIBSs+gDyTH0ZhUem9eQ1t4DcEn2B9lHxfRMeGQhyNdSUz+rb+5A3ummX6DQTOIs1XK0gOteOg/LPtSo9VJ+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
-  <script src='\codeScalper\chat\node_modules\socket.io\client-dist\socket.io.js'></script>
+  <div class='wrapper'>
+    <div class="user-container">
+      대화명: <input type="text" id='nickname'>
+    </div>
+    <div class="display-container">
+      <ul class="chatting-list"></ul>
+    </div>
+    <div class="input-container">
+      <input type="text" class="chatting-input">
+      <button class="send-button">전송</button>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js" integrity="sha512-iZIBSs+gDyTH0ZhUem9eQ1t4DcEn2B9lHxfRMeGQhyNdSUz+rb+5A3ummX6DQTOIs1XK0gOteOg/LPtSo9VJ+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- <script src='\codeScalper\chat\node_modules\socket.io\client-dist\socket.io.js'></script> -->
   <script src='js/chat.js'></script>
   <!-- C:\source\javascript\codeScalper\chat\node_modules\socket.io\client-dist\socket.io.js -->
 </body>
