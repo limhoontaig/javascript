@@ -4,6 +4,7 @@ const nickname = document.querySelector("#nickname");
 const chatList = document.querySelector(".chatting-list");
 const chatInput = document.querySelector(".chatting-input");
 const sendButton = document.querySelector(".send-button");
+const displayContainer = document.querySelector(".display-container");
 
 
 
@@ -16,9 +17,11 @@ sendButton.addEventListener("click", () => {
 })
 
 socket.on('chatting', (data) => {
+  console.log(data)
   const { name, msg, time } = data;
   const item = new LiModel( name, msg, time );
   item.makeLi()
+  displayContainer.scrollTo(0, displayContainer.scrollHeight);
 })
 
 function LiModel(name, msg, time) {
