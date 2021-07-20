@@ -13,12 +13,10 @@
             <h2>HIGH SCORE</h2>
             <ol id='highscores'></ol>
         </div>
-        <div class="playground">
-            <ul>
-                <li>123</li>
-                <li>123</li>
-                <li>123</li>
-            </ul>
+        <div class="wrapper">
+            <div class="playground">
+                <ul></ul>
+            </div>
         </div>
         <div class="right-column">
             <div>
@@ -31,9 +29,10 @@
                 <span class='sound-item' id='sound-speaker'></span>
                 <span class='sound-item' id='sound-description'></span>
             </div>
-            <button id='play-bin' onclick='play()' class='play-button'>Play</button>
-            <button id='pause-bin' onclick='pause()' class='play-button'>Pause</button>
+            <button id='play-btn' onclick='play()' class='play-button'>Play</button>
+            <button id='pause-btn' onclick='pause()' class='play-button'>Pause</button>
         </div>
     </div>
+    <script src='js/tetris.js' type='module'></script>
 </body>
 </html>
