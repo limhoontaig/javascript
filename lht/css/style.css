@@ -1,0 +1,22 @@
+* {
+    font-family: 'Press Start 2P', cursive;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 350px 320px 200px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
