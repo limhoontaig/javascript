@@ -4,6 +4,9 @@
     padding: 0;
 }
 
+ul {
+    list-style: none;
+}
 .grid {
     display: grid;
     grid-template-columns: 350px 320px 200px;
@@ -43,3 +46,28 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.tree {
+    background: #67c23a;
+  }
+  
+  .bar {
+    background: salmon;
+  }
+  
+  .square {
+    background: #6f3cc2;
+  }
+  
+  .zee {
+    background: #e6a23c;
+  }
+  
+  .elLeft {
+    background: #8e44ad;
+  }
+  
+  .elRight {
+    background: #16a085;
+  }
+   
