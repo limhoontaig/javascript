@@ -11,7 +11,8 @@ const GAME_ROWS = 20;
 const GAME_COLS = 10;
 
 // variables
-let score =0;
+let score = 0;
+let level = 0;
 let duration = 500;
 let downInterval;
 let tempMovingItem;
@@ -190,3 +191,32 @@ restatButton.addEventListener('click', () => {
   gameText.style.display = 'none'
   init()
 })
+
+function showHighScores() {
+  const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+  const highScoreList = document.getElementById('highScores');
+
+  highScoreList.innerHTML = highScores
+    .map((score) => `<li>${score.score} - ${score.name}`)
+    .join('');
+}
+
+function checkHighScore(score) {
+  const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+  const lowestScore = highScores[NO_OF_HIGH_SCORES - 1]?.score ?? 0;
+
+  if (score > lowestScore) {
+    const name = prompt('You got a highscore! Enter name:');
+    const newScore = { score, name };
+    saveHighScore(newScore, highScores);
+    showHighScores();
+  }
+}
+
+function saveHighScore(score, highScores) {
+  highScores.push(score);
+  highScores.sort((a, b) => b.score - a.score);
+  highScores.splice(NO_OF_HIGH_SCORES);
+
+  localStorage.setItem('highScores', JSON.stringify(highScores));
+}
