@@ -185,7 +185,7 @@ document.addEventListener('keydown', e => {
   // console.log(e)
 })
 
-restatButton.addEventListener('click', () => {
+play-btn.addEventListener('click', () => {
   playground.innerHTML = '';
   gameText.style.display = 'none'
   init()
