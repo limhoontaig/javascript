@@ -2,9 +2,12 @@
 let output = ''
 
 for (let i = 0; i <9; i++) {
-  output += ' '
-  for (let j = 0; j < (i*2)+1; j++) {
-    output += '*';    
+  for (let k = 0; k < i+1; k++) {
+    output += ' '
+  }
+  
+    for (let j = 0; j < (i*2)+1; j++) {
+      output += '*';    
   }
   output += '\n';  
 }
