@@ -25,7 +25,7 @@
     console.log(sum_test(1));
     console.log(sum_test(2));
 
-    const sum = function() {
+    const sum = function(limit) {
       let output = 0;
       for (let i = 1; i <=limit; i++) {
         output += i;
@@ -33,12 +33,9 @@
       console.log(output)
     }
     
-    let limit = 10;
-    sum();
-    limit = 20;
-    sum();
-    limit = 30;
-    sum();
+    sum(10);
+    sum(20);
+    sum(30);
     
 
 
