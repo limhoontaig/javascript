@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const muliplyAll = function (start, end) {
+      let output = 1;
+      for (let i = start; i <= end; i++){
+        output *= i;       
+      }
+      return output
+    }
+    console.log(muliplyAll(1,2))
+    console.log(muliplyAll(1,9))
+    console.log(muliplyAll(1,10))
+    console.log(muliplyAll(1,15))
+  </script>
+
+  <script>
+    const max = function (firstItem, ...remained) {
+      if (Array.isArray(firstItem)) {
+        let output = firstItem[0];
+        for (const value of firstItem) {
+          if (output < value) {
+            output = value;
+          }
+        }  
+        return output
+      } else {
+        let output = firstItem;
+        for (const value of remained) {
+          if (output < value) {
+            output = value;
+          }
+        }
+        return output
+      }    
+    }
+
+    console.log(max([1,23,45,123,455,5,6]))
+    console.log(max(1,23,45,123,455,5,6))
+
+//    let output = Array[0];
+//    const maxArgs = function (...Array) {
+//      for (const value of Array) {
+//        if (output < value) {
+//          output = value
+//        }
+//      }
+//      return output
+//    }
+
+//    console.log(maxArgs(1,23,45,123,455,5,6))
+  </script>
+</body>
+</html>
