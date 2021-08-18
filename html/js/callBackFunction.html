@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // callBack함수 매개변수로 숫지하나를 받는 형태
+    const test = function (callBackFunction) {
+      for (let i = 0; i < 5; i++) {
+        callBackFunction(i);
+      } 
+    }
+
+    const Function = function (argumentOfcallBackFunction) {
+      console.log(`${argumentOfcallBackFunction}번째 안녕하세요!!`)
+    }
+
+    test (Function)
+  </script>
+</body>
+</html>
