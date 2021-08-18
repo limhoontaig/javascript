@@ -25,6 +25,12 @@
     test([52,124,273,102,32], function (argumentOfcallBackFunction) {
       console.log(`${argumentOfcallBackFunction}번째 안녕하세요!!`)
     })
+
+
+    const testArray = [52,124,273,102,32];
+    testArray.forEach(function(value, index, array) {
+      console.log(`${index} 번째의 값은 ${value} 입니다.`)
+    });
   </script>
 </body>
 </html>
