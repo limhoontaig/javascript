@@ -8,29 +8,30 @@
 </head>
 <body>
   <script>
-    // callBack함수 매개변수로 숫지하나를 받는 형태
-    const test = function (Array, callBackFunction) {
-      for (const value of Array) {
-        callBackFunction(value);
-      } 
-    }
-
-    const Array = [52,124,273,102,32];
-    const Function = function (argumentOfcallBackFunction) {
-      console.log(`${argumentOfcallBackFunction}번째 안녕하세요!!`)
-    }
-
-    test (Array, Function)
-
-    test([52,124,273,102,32], function (argumentOfcallBackFunction) {
-      console.log(`${argumentOfcallBackFunction}번째 안녕하세요!!`)
-    })
-
 
     const testArray = [52,124,273,102,32];
     testArray.forEach(function(value, index, array) {
       console.log(`${index} 번째의 값은 ${value} 입니다.`)
     });
-  </script>
+    
+    let Array = [52,124,273,102,32];
+    array = Array.filter(function(value, index) {
+      return value % 2 ===0;
+    });
+    console.log(array)
+    
+    array = Array.filter((value, index) => value % 2 ===0);
+    console.log(array)
+    
+    
+    Array = [52,124,273,102,32];
+    array = Array.map(function(value, index) {
+      return value + '!!';
+    });
+    console.log(array)
+    
+    array = Array.map((value, index) =>value + '!!');
+    console.log(array)
+    </script>
 </body>
 </html>
