@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //setTimeout() // single action after specific time
+
+    const a = setTimeout(function () {
+      console.log('this is a setTimeout function')
+    }, 1000)
+    
+   // setInterval() // multiple action specific interval
+    const b = setInterval(function () {
+      console.log('this is a setInterval function')      
+    }, 1000);
+    console.log(a, b);
+
+    clearTimeout(a);
+    clearInterval(b);
+
+
+
+    
+  </script>
+  <script>
+      (function () {
+      const a = 100;
+      console.log(a)
+    }) ();
+    
+  </script>
+  
+    
+  <script>
+    (function () {
+      const a = 1000;
+      console.log(a)
+    }) ();
+      
+  </script>
+    
+  <script>
+    (function () {
+      const a = 10;
+      console.log(a)
+    }) ();
+  </script>
+    
+      
+  <script></script>
+</body>
+</html>
