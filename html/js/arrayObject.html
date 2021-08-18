@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // array element(요소)
+    const array = [100, 10, 'string', true, function () {}];
+    array[0] = 300;
+    console.log(array[0]);
+    console.log(array[1]);
+    console.log(array[2]);
+    console.log(array[3]);
+    console.log(array[4]);
+    // 속성(property)
+    // method(메서드, object 내부 함수 명칭)
+    const dog = {
+      name : 'Cloud',
+      age: 7,
+      bark: function () {
+        console.log(`${this.name}이/가 짖습니다.`)
+        console.log(`${dog.name}이/가 짖습니다.`)
+      },
+      sleep: () => {
+        console.log(`${this.name}이/가 잡니다.`)
+        console.log(`${dog.name}이/가 잡니다.`)
+      }
+    }
+    //dog.name = 'White'
+    console.log(dog['name'])
+    console.log(dog.name)
+    console.log(dog['age'])
+    console.log(dog.age)
+    dog.bark()
+    dog.sleep()
+
+  </script>
+</body>
+</html>
