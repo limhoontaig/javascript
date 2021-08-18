@@ -9,17 +9,18 @@
 <body>
   <script>
     // callBack함수 매개변수로 숫지하나를 받는 형태
-    const test = function (callBackFunction) {
-      for (let i = 0; i < 5; i++) {
-        callBackFunction(i);
+    const test = function (Array, callBackFunction) {
+      for (const value of Array) {
+        callBackFunction(value);
       } 
     }
 
+    const Array = [52,124,273,102,32];
     const Function = function (argumentOfcallBackFunction) {
       console.log(`${argumentOfcallBackFunction}번째 안녕하세요!!`)
     }
 
-    test (Function)
+    test (Array, Function)
   </script>
 </body>
 </html>
