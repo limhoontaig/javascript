@@ -30,12 +30,14 @@
       for (let i = 1; i <=limit; i++) {
         output += i;
       }
-      return output;
+      return [output, limit];
     }
-    
-    console.log(`${sum()}까지의 누적 합계는 ${sum(10)}입니다`);
-    console.log(`${sum()}까지의 누적 합계는 ${sum(20)}입니다`);
-    console.log(`${sum()}까지의 누적 합계는 ${sum(30)}입니다`);
+    let [output, limit] = sum(100)
+    console.log(`${limit}까지의 누적 합계는 ${output}입니다`);
+    [output, limit] = sum(20000)
+    console.log(`${limit}까지의 누적 합계는 ${output}입니다`);
+    [output, limit] = sum(300000000)
+    console.log(`${limit}까지의 누적 합계는 ${output}입니다`);
     
 
 
