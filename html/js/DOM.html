@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.innerHTML += '<h1>A: Script in Head Area</h1>'
+        })
+    </script>
+</head>
+<body>
+    <script>document.body.innerHTML += '<h1>B: Script in Body Area Before h1 Tag </h1>'</script>
+    <h1>안녕하세요 !!!</h1>
+    <script>document.body.innerHTML += '<h1>C: Script in Body Area After h1 Tag </h1>'</script>
+    
+</body>
+</html>
