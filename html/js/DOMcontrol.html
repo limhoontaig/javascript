@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const header1 = document.querySelector('#textContent');
+      const header2 = document.querySelector('#innerHTML');
+      //조작!
+      // 값을 추출한다
+      console.log(header1.textContent)
+      console.log(header2.innerHTML)
+      // 값을 넣는다.
+      header1.textContent = 'textContent <br> 에러발생 원하는 문자열'; // // 사용시 에러 발생함
+      header2.innerHTML = 'innerHTML <br> 원하는 문자열'
+    })
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // 조작
+
+        // 값을 넣는행위
+
+        //값을 추출하는 행위
+      })
+    </script>
+</head>
+<body>
+  <h1 id='innerHTML'>innerHTML 속성 기존 문자열</h1>
+  <h1 id='textContent'>textContent 속성 기존 문자열</h1> 
+  <img src="" alt="">
+</body>
+</html>
