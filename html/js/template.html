@@ -9,6 +9,11 @@
       document.addEventListener('DOMContentLoaded', () => {
         const a = document.querySelector('a')
         a.addEventListener('click', (event) => {
+          event.currentTarget
+          // event.preventDefault()
+          console.log(a)
+        })
+        a.addEventListener('contextmenu', (event) => {
           event.preventDefault()
         })
       })
