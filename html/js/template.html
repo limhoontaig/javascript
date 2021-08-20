@@ -8,31 +8,40 @@
 </head>
 <body>
   <script>
+    let counter = 0;
+    const listener = () => {
+      header.innerText = `Count of Click: ${++counter}`
+
+    }
+
     const header = document.createElement('h1')
+    header.userSelect = 'none'
     header.innerText = `Count of Click: 0`
 
     const p = document.createElement('p')
+    p.userSelect = 'none'
     p.innerText = `State of Event Connection: Disconnect`
     
     const connectButton = document.createElement('button')
     connectButton.innerText = 'Button of Event Connection'
+    connectButton.addEventListener('click', () => {
+      header.addEventListener('click', listener)
+      p.innerText = `State of Event Connection: Connect`
+    })
     
     const disconnectButton = document.createElement('button')
     disconnectButton.innerText = 'Button of Event Disonnection'
+    disconnectButton.addEventListener('click', () => {
+      header.removeEventListener('click', listener)
+      p.innerText = `State of Event Connection: Disconnect`
+    })
 
     document.body.appendChild(header)
     document.body.appendChild(connectButton)
     document.body.appendChild(disconnectButton)
     document.body.appendChild(p)
 
-    let count = 0;
-    header.style.userSelect = 'none'
-    header.innerText = `Count of Click: ${count}`
-    header.addEventListener('click', () => {
-      count++
-      header.innerText = `Count of Click: ${count}`
-
-    })
+    
   </script>
 </body>
 </html>
