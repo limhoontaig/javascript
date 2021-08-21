@@ -7,31 +7,30 @@
   <title>Document</title>
   <style>
   #main {
-    /* width: ; */
-    height: 100px;
-    border: 1px solid #c3c3c3;
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
     display: flex;
   }
 
-  #main div:nth-of-type(1) {flex-grow: 3;}
-  #main div:nth-of-type(2) {flex-grow: 1;}
-  #main div:nth-of-type(3) {flex-grow: 1;}
-  #main div:nth-of-type(4) {flex-grow: 1;}
-  #main div:nth-of-type(5) {flex-grow: 1;}
+  #main div {
+    flex: 1;
+  }
 
   </style>
 </head>
 <body>
-  <h1>The flex-grow Property</h1>
+  <h1>The flex Property</h1>
 
   <div id = 'main'>
-    <div style='background-color:coral;'>coral</div>
-    <div style='background-color:lightblue;'>lightblue</div>
-    <div style='background-color:khaki;'>khaki</div>
-    <div style='background-color:pink;'>pink</div>
-    <div style='background-color:lightgray;'>gray</div>
+    <div style='background-color:coral;'>RED</div>
+    <div style='background-color:lightblue;'>BLUE</div>
+    <div style='background-color:lightgreen;'>GREEN div with more content.</div>
   </div>
-  <p><b>Note:</b> Internet Explorer 10 and earlier versions do not support the flex-grow property.</p>
+
+  <p><b>Note:</b> Internet Explorer 9 and earlier versions do not support the flex-grow property.</p>
+  <p><b>Note:</b> Internet Explorer 10 supports an alternative, the -ms-flex property. IE11 and newer versions fully support the flex property (do not need the -ms- prefix.</p>
+
 
 </body>
 </html>
