@@ -7,11 +7,11 @@
   <title>Document</title>
   <style>
   #main {
-    width: 400px;
-    height: 400px;
+    width: 200px;
+    height: 200px;
     border: 1px solid black;
     display: flex;
-    flex-direction: column-reverse;
+    flex-flow: row-reverse wrap;
   }
 
   #main div {
@@ -22,20 +22,18 @@
     /* flex-basis: 0; */
   }
 
-  #main div:nth-of-type(2) {
-    flex-basis: 100px;
-  }
 
   </style>
 </head>
 <body>
-  <h1>The flex-direction Property</h1>
+  <h1>The flex-flow Property</h1>
   <div id = 'main'>
     <div style='background-color:coral;'>1 50px</div>
-    <div style='background-color:lightblue;'>2 100px</div>
+    <div style='background-color:lightblue;'>2 50px</div>
     <div style='background-color:rgb(101, 101, 235);'>3 50px</div>
     <div style='background-color:rgb(8, 75, 97);'>4 50px</div>
     <div style='background-color:rgb(119, 33, 80);'>5 50px</div>
+    <div style='background-color:gray;'>6 50px</div>
   </div>
 
   <p><b>Note:</b> Internet Explorer 10 and earlier versions do not support the flex-grow property.</p>
