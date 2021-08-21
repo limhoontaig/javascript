@@ -6,25 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-  #myDIV {
-    width: 300px;
-    height: 200px;
-    border: 1px solid black;
-    background-image: url('w3css.gif');
-    background-size: 20px 20px;
-    animation: mymove 5s infinite;
+  diV {
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: relative;
+    animation: mymove 3s;
+    animation-iteration-count: 2;
   }
 
   @keyframes mymove {
-    50% {background-size: 125px 125px;}
+    from {top: 0px}
+    to {top: 200px}
   }
   </style>
 </head>
 <body>
-<h1>Animation of background-size</h1>  
+<h1>The animation-iteration-count Property</h1>  
 
-<p>Gradually change the background-size from '10px 10px' to '125px 125px', and back:</p>
-<div id='myDIV'></div>
+<p>Play the animation two times:</p>
+<div></div>
 
 <p><strong>Note:</strong> CSS Animation do not work in Internet Explorer 9 and earlier versions.</p>
 
