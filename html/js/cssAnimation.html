@@ -7,27 +7,34 @@
   <title>Document</title>
   <style>
   diV {
-    width: 100px;
-    height: 100px;
-    background: red;
     position: relative;
-    animation: mymove 3s;
-    animation-iteration-count: 2;
+    width: 60px;
+    height: 60px;
+    background-color: red;
+    transform: rotateX(180deg);
   }
 
-  @keyframes mymove {
-    from {top: 0px}
-    to {top: 200px}
+  #div1 {
+    backface-visibility: hidden;
+  }
+
+  #div2 {
+    backface-visibility: visible;
   }
   </style>
 </head>
 <body>
-<h1>The animation-iteration-count Property</h1>  
+<h1>The backface-visibility Property</h1>  
 
-<p>Play the animation two times:</p>
-<div></div>
+<p>This example shows the back face of two div elements.</p>
 
-<p><strong>Note:</strong> CSS Animation do not work in Internet Explorer 9 and earlier versions.</p>
+<p>This div element has 'backface-visibility: hidden', and the back face of the div element is invisible:</p>
+<div id='div1'><strong>DIV 1</strong></div>
+
+<p>This div element has 'backface-visibility: visible', and the back face of the div element shows a mirror image of the front face:</p>
+<div id='div2'><strong>DIV 2</strong></div>
+
+<p><strong>Note:</strong> The backface-visiblity property is not supported in Internet Explorer 9 and earlier versions. Safari supports it with a webkit prefix.</p>
 
 </body>
 </html>
