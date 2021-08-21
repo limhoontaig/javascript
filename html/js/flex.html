@@ -8,28 +8,35 @@
   <style>
   #main {
     width: 300px;
-    height: 300px;
+    height: 100px;
     border: 1px solid black;
     display: flex;
   }
 
   #main div {
-    flex: 1;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 50px;
+  }
+
+  #main div:nth-of-type(2) {
+    flex-basis: 100px;
   }
 
   </style>
 </head>
 <body>
-  <h1>The flex Property</h1>
-
+  <h1>The flex-basis Property</h1>
+  <p>Set the initial length of the flex items to 50 pixels, with an exception; set the iniyial length of the second flex item to 100 pixels:</p>
   <div id = 'main'>
-    <div style='background-color:coral;'>RED</div>
-    <div style='background-color:lightblue;'>BLUE</div>
-    <div style='background-color:lightgreen;'>GREEN div with more content.</div>
+    <div style='background-color:coral;'>50px</div>
+    <div style='background-color:lightblue;'>100px</div>
+    <div style='background-color:rgb(101, 101, 235);'>50px</div>
+    <div style='background-color:rgb(8, 75, 97);'>50px</div>
+    <div style='background-color:rgb(119, 33, 80);'>50px</div>
   </div>
 
-  <p><b>Note:</b> Internet Explorer 9 and earlier versions do not support the flex-grow property.</p>
-  <p><b>Note:</b> Internet Explorer 10 supports an alternative, the -ms-flex property. IE11 and newer versions fully support the flex property (do not need the -ms- prefix.</p>
+  <p><b>Note:</b> Internet Explorer 10 and earlier versions do not support the flex-grow property.</p>
 
 
 </body>
