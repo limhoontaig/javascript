@@ -7,11 +7,7 @@
     const load = () => {
       const data = localStorage.getItem('application')
       if (data !== null) {
-        const [color, message] = data.split(',')
-        return {
-          color: color,
-          message: message
-        }
+        return JSON.parse(data)
       } else {
         return {
           color: 'red',
@@ -20,7 +16,7 @@
       }
     }
     const save = (data) => {
-      localStorage.setItem('application', `${data.color},${data.message}`)
+      localStorage.setItem('application', JSON.stringify(data))
     }
 
     document.addEventListener('DOMContentLoaded', () => {
