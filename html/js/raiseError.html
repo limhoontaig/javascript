@@ -8,19 +8,26 @@
   <script>
     // 고급 예외 처리
     document.addEventListener('DOMContentLoaded', () => {
-      const h1 = document.querySelector('h1');
-      try { 
-        h1.textContent = '변경!'
-      } catch (error) {
-        alert(`${error}가/이 발생하였습니다.`)
-        console.log(`${error}가/이 발생하였습니다.`)
-      } finally {
-
+      const getPerimeter = (r) => {
+        if (r<0) {
+          throw '길이는 음수가 될 수 없습니다.'
+        }
+        const pi = 3.14;
+        return 2 * pi * r;
       }
+      try { 
+        console.log(getPerimeter(-1))
+      } catch (e) {
+        console.log(`${e}어떤 문제가 발생하였습니다.`)
+      } finally {
+        console.log(`무조건적으로 실행할 코드.`)
+      }
+      console.log('프로그램이 정상적으로 종료되었습니다.')
+
     })
   </script>
 </head>
 <body>
-  <h1>sample for try catch raise error </h1>
+  <!-- <h1>sample for try catch raise error </h1> -->
 </body>
 </html>
