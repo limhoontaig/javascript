@@ -6,19 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script>
-    // 기본 예외 처리
+    // 고급 예외 처리
     document.addEventListener('DOMContentLoaded', () => {
       const h1 = document.querySelector('h1');
-      if (h1 === null) {
-        console.log('오류가 발생하였습니다.')
-    } else {
-      h1.textContent('변경!')
-    }
+      try { 
+        h1.textContent = '변경!'
+      } catch (error) {
+        alert(`${error}가/이 발생하였습니다.`)
+        console.log(`${error}가/이 발생하였습니다.`)
+      } finally {
 
+      }
     })
   </script>
 </head>
 <body>
-  
+  <h1>sample for try catch raise error </h1>
 </body>
 </html>
