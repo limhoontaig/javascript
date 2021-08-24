@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      let counter =0
+      const listener = () => {
+        header.textContent = `Count of Click: ${++counter}`
+      }
+  
+      const header = document.createElement('h1');
+      header.style.userSelect = 'none';
+      header.textContent = 'Count of Click: 0';
+  
+      const p = document.createElement('p');
+      p.style.userSelect = 'none';
+      p.textContent = 'Status of Connection: Disconnect';
+  
+      const connectButton = document.createElement('button');
+      connectButton.textContent = 'Connect button to Event';
+      connectButton.addEventListener('click', () => {
+        header.addEventListener('click', listener);
+        p.textContent = 'Status of Connection: Connect';
+      })
+  
+      const disconnectButton = document.createElement('button');
+      disconnectButton.textContent = 'Disconnect button to event';
+      disconnectButton.addEventListener('click', () => {
+        header.removeEventListener('click', listener);
+        p.textContent = 'Status of Connection: Disconnect' 
+      })
+  
+      document.body.appendChild(header)
+      document.body.appendChild(p)
+      document.body.appendChild(connectButton)
+      document.body.appendChild(disconnectButton)
+    })
+  </script>
+</head>
+<body>
+
+  
+</body>
+</html>
