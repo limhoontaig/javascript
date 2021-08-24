@@ -8,37 +8,49 @@
 </head>
 <body>
   <script>
-    let counter = 0;
-    const listener = () => {
-      header.textContent = `클릭 횟수: ${++counter}`;
-    }
+    class Students {
+      constructor (name, koreanScore, englishScore) {
+        this.name = name; 
+        this.koreanScore = koreanScore; 
+        this.englishScore = englishScore; 
+      } 
+      
+      sum () { 
+        return (this.koreanScore + this.englishScore); 
+      } 
+      info () { 
+        return `name: ${this.name}, total: ${this.sum()}`;
+      }
+    } 
+    const stu001 = new Students('mina', 100, 70); 
+    const stu002 = new Students('lily', 90, 60); 
+    console.log(stu001); // Students { name: 'mina', koreanScore: 100, englishScore: 70 } 
+    console.log(stu002); // Students { name: 'lily', koreanScore: 90, englishScore: 60 } 
+    console.log(stu001.sum()); // 170 
+    console.log(stu002.sum()); // 150 
+    console.log(stu001.info()); // name: mina, total: 170 
+    console.log(stu002.info()); // name: lily, total: 150 // stu002.sum 변경 
+    stu002.sum = function () { 
+      return (this.koreanScore + this.englishScore + 10); 
+    } 
+    console.log(stu002.info()); // name: lily, total: 160
 
-    const header = document.createElement('h1');
-    header.style.userSelect = 'none'
-    header.textContent = '클릭 횟수: 0';
-    
-    const p = document.createElement('p');
-    p.style.userSelect = 'none'
-    p.textContent = '이벤트 연결 상태: 해제';
-
-    const connectButton = document.createElement('button')
-    connectButton.textContent = '이벤트 연결';
-    connectButton.addEventListener('click', () => {
-      header.addEventListener('click', listener);
-      p.textContent = '이벤트 연결 상태: 연결';
-    })
-    
-    const disconnectButton = document.createElement('button')
-    disconnectButton.textContent = '이벤트 해제';
-    disconnectButton.addEventListener('click', () => {
-      header.removeEventListener('click', listener);
-      p.textContent = '이벤트 연결 상태: 해제';      
-    })
-
-    document.body.appendChild(header)
-    document.body.appendChild(p)
-    document.body.appendChild(connectButton)
-    document.body.appendChild(disconnectButton)
   </script>
+  <script>
+    class ExtentionStudents extends Students { 
+      constructor (name, koreanScore, englishScore, mathScore) { 
+        super(name, koreanScore, englishScore); 
+        this.mathScore = mathScore; 
+      } 
+      total () { 
+        return (super.sum() + this.mathScore); 
+      } 
+    } 
+    const stu004 = new ExtentionStudents('rose', 100, 80, 60); 
+    console.log(stu004); // { name: 'rose', koreanScore: 100, englishScore: 80, mathScore: 60 } 
+    console.log(stu004.total()); // 240
+
+  </script>
+
 </body>
 </html>
