@@ -9,13 +9,16 @@
 <body>
   <script>
     class Rectangle {
+      //constructor
       constructor(height, width) {
         this.height = height;
         this.width = width;
       }
+      //getter
       get area() {
         return this.calcArea();
       }
+      // method
       calcArea () {
         return this.height * this.width;
       }
