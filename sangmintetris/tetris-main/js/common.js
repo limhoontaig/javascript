@@ -1,7 +1,7 @@
 function getRandomIndex(length) {
-    return Math.floor(Math.random()*length);
+  return Math.floor(Math.random() * length);
 }
 
 function clone(obj) {
-    return JSON.parse(JSON.stringify(obj));
+  return JSON.parse(JSON.stringify(obj));
 }
