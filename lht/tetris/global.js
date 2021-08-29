@@ -11,7 +11,7 @@ const ROWS_NEXT_BOARD = 4;
 let mainBlock = null;
 let nextBlock = null;
 
-// let time = 0;
-// let requestAnimationId = null;
+let time = 0;
+let requestAnimationId = null;
 
 // let matrixMainBoard = initMatrix(ROWS_MAIN_BOARD, COLS_MAIN_BOARD);

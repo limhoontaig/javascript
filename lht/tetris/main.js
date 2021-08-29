@@ -9,7 +9,7 @@ function main () {
   mainBlock = createNextBlock();
   nextBlock = createNextBlock();
   rebuild();
-  // repeatMotion();
+  repeatMotion(0);
 }
 
 function resize () {
@@ -81,28 +81,31 @@ function keyHandler(event) {
   drawBlock(mainBlock, ctxMainBoard);
 }
 
-// function repeatMotion(timeStamp) {
-//   const duration = timestamp - time;
+function repeatMotion(timeStamp) {
+  // const duration = timestamp - time;
 
-//   if(duration > 1000) {
-//     if(!validMove(mainBlock, matrixMainBoard, 0, 1)) {
-//       stack(mainBlock, matrixMainBoard);
-//       mainBlock = nextBlock;
-//       nextBlock = createNextBlock();
+  if(timeStamp - time > 1000) {
+  // if(duration > 1000) {
+    if(!validMove(mainBlock, 0, 1)) {
+      console.log(mainBlock)
+      // if(!validMove(mainBlock, matrixMainBoard, 0, 1)) {
+        // stack(mainBlock, matrixMainBoard);
+      mainBlock = nextBlock;
+      nextBlock = createNextBlock();
 
-//       matrixMainBoard[0].some((value, x) => {
-//         if(value > 0) {
-//           window.cancelAnimationFrame(requestAnimationId);
-//           requestAnimationId = null;
-//           return true;
-//         }
-//       });
-//       if(requestAnimationId == null) {
-//         return;
-//       }
-//     }
-//     time = timeStamp;
-//   }
-//   rebuild()
-//   requestAnimationId = window.requestAnimationFrame(repeatMotion);
-// }
+      // matrixMainBoard[0].some((value, x) => {
+      //   if(value > 0) {
+      //     window.cancelAnimationFrame(requestAnimationId);
+      //     requestAnimationId = null;
+      //     return true;
+      //   }
+      // });
+      // if(requestAnimationId == null) {
+      //   return;
+      // }
+    }
+    time = timeStamp;
+  }
+  rebuild()
+  requestAnimationId = window.requestAnimationFrame(repeatMotion);
+}

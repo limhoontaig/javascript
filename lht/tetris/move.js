@@ -47,9 +47,9 @@ function validMove(block, x, y) {
   move(cloneBlock, x, y);
   if(validate(cloneBlock)) {
     move(block, x, y);
-  //   return true;
-  // } else {
-  //   return false;
+    return true;
+  } else {
+    return false;
   }
 }
 
