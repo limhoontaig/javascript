@@ -3,6 +3,7 @@
 }) ();
 
 function main () {
+  window.addEventListener('keydown', keyHandler);
   resize();
   window.addEventListener('resize',resize);
   mainBlock = createNextBlock();
@@ -40,4 +41,36 @@ function rebuild() {
   resize();
   drawBlock(mainBlock, ctxMainBoard);
   drawBlock(nextBlock, ctxNextBoard);
+}
+
+function keyHandler(event) {
+  const inputKey = event.keyCode;
+
+  const KEY = {
+    LEFT: 37,
+    UP: 38,
+    RIGHT: 39,
+    DOWN: 40
+  }
+
+  switch (inputKey) {
+    case KEY.UP:
+      rotate(mainBlock);
+      break;
+  
+    case KEY.DOWN:
+      move(mainBlock, 0, 1);
+      break;
+  
+    case KEY.LEFT:
+      move(mainBlock, -1, 0);
+      break;
+  
+    case KEY.RIGHT:
+      move(mainBlock, 1, 0);
+      break;
+  
+  }
+
+  drawBlock(mainBlock, ctxMainBoard);
 }
