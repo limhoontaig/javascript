@@ -3,6 +3,7 @@ function move(block, x, y) {
   block.y += y;
 }
 
+
 function rotate(block) {
   block.shape.forEach((row, y) => {
     for (let x = 0; x < y; x++) {
@@ -11,28 +12,55 @@ function rotate(block) {
       block.shape[y][x] = tempValue;
     }
   });
-
-  block.shape.forEach((row) => {
-    row.reverse();
-  })
+    block.shape.forEach((row) => {
+      row.reverse();
+  });
 }
+
+
 
 function validate(block) {
   let isValid = true;
 
   block.shape.some((row, dy) => {
-    row.some((valie, dx) => {
+    row.some((value, dx) => {
       if(value > 0) {
-        if(block.x+dx < 0 || block.x+dx >= matrix[0].length ||
-          block.y+dy < 0 || block.y+dy >= matrix.length) {
+        if(block.x+dx < 0 || block.x+dx >= COLS_MAIN_BOARD ||block.y+dy < 0 || block.y+dy >= ROWS_MAIN_BOARD ) {
+        // if(block.x+dx < 0 || block.x+dx >= matrix[0].lehgth ||block.y+dy < 0 || block.y+dy >= matrix.length ) {
+          // block.y+dy < 0 || block.y+dy >= matrix.length ||
+          // matrix[block.y+dy][block.x+dx] > 0) {
             isValid = false;
             return true;
           }
+        }
+      });
+      if(!isValid) {
+        return true;
       }
     });
-    if(!isValid) {
-      return true;
-    }
-  });
-  return isValid;
+    return isValid;
+}
+
+  
+function validMove(block, x, y) {
+  const cloneBlock = clone(block);
+  move(cloneBlock, x, y);
+  if(validate(cloneBlock)) {
+    move(block, x, y);
+  //   return true;
+  // } else {
+  //   return false;
+  }
+}
+
+
+function validRotate(block) {
+  const cloneBlock = clone(block);
+  rotate(cloneBlock);
+  if(validate(cloneBlock)) {
+    rotate(block);
+  //   return true;
+  // } else {
+  //   return false;
+  } 
 }

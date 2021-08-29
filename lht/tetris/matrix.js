@@ -61,7 +61,30 @@ function randomNextBlockMatrix() {
     block_set: BLOCK_SET[index]
   }
 
-  const b = BLOCK_SET[getRandomIndex(BLOCK_SET.length)]
   return BLOCK_SET[getRandomIndex(BLOCK_SET.length)]
 
 }  
+
+function initMatrix(rows, cols) {
+  let matrix = {
+    board: [],
+    options: []
+  };
+  for (let y = 0; y < rows; y++) {
+    matrix.board.push(new Array(cols).fill(0));
+    matrix.options.push(new Array(cols).fill({}));
+  }
+  return matrix;
+}
+
+
+function stack(block, matrix) {
+  block.shape.forEach((row, y) => {
+    row.forEach((value, x) => {
+      if(value > 0) {
+        matrix[y+block.y][x+block.x] = block.shape[y][x];
+      }
+    });
+  });
+}
+

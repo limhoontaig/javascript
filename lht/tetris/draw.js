@@ -9,3 +9,14 @@ function drawBlock(block, ctx) {
     })
   })
 }
+
+// function drawBoard(matrix, ctx) {
+//   matrix.forEach((row, y) => {
+//     row.forEach((value, x) => {
+//       if(value > 0) {
+//         ctx.fillStyle = 'white';
+//         ctx.fillRect(x, y, 1, 1);
+//       }
+//     });
+//   });
+// }
