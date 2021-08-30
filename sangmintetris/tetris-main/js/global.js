@@ -1,20 +1,20 @@
-const sideContents = document.querySelector('#side-contents');
-const title = document.querySelector('#title');
+const sideContents = document.querySelector("#side-contents");
+const title = document.querySelector("#title");
 
-const bottomContainer = document.querySelector('#bottom-container');
+const bottomContainer = document.querySelector("#bottom-container");
 const keypad = document.querySelector("#keypad");
 const keypad2 = document.querySelector("#keypad2");
 
-const startButton = document.querySelector('#start-button');
-const quitButton = document.querySelector('#quit-button');
-const pauseButton = document.querySelector('#pause-button');
-const toggleKeysetButton = document.querySelector('#toggle-keyset-button');
-const toggleSoundButton = document.querySelector('#toggle-sound-button');
+const startButton = document.querySelector("#start-button");
+const quitButton = document.querySelector("#quit-button");
+const pauseButton = document.querySelector("#pause-button");
+const toggleKeysetButton = document.querySelector("#toggle-keyset-button");
+const toggleSoundButton = document.querySelector("#toggle-sound-button");
 
-const canvasMainBoard = document.querySelector('#main-board');
-const ctxMainBoard = canvasMainBoard.getContext('2d');
-const canvasNextBoard = document.querySelector('#next-board');
-const ctxNextBoard = canvasNextBoard.getContext('2d');
+const canvasMainBoard = document.querySelector("#main-board");
+const ctxMainBoard = canvasMainBoard.getContext("2d");
+const canvasNextBoard = document.querySelector("#next-board");
+const ctxNextBoard = canvasNextBoard.getContext("2d");
 
 const COLS_MAIN_BOARD = 10;
 const ROWS_MAIN_BOARD = 20;
@@ -35,36 +35,36 @@ let filledLines = [];
 let gameStatus = null;
 
 let totalScore = 0;
-let scoreElem = document.querySelector('#score');
-let addScoreElem = document.querySelector('#add-score');
+let scoreElem = document.querySelector("#score");
+let addScoreElem = document.querySelector("#add-score");
 let addScoreId = null;
 let globalAddScore = 0;
-let highScoreElem = document.querySelector('#high-score');
+let highScoreElem = document.querySelector("#high-score");
 
 let remaningLines = 0;
-let linesElem = document.querySelector('#lines');
-let removeLinesElem = document.querySelector('#remove-lines');
+let linesElem = document.querySelector("#lines");
+let removeLinesElem = document.querySelector("#remove-lines");
 let removeLinesId = null;
 let comboCount = 0;
 
 let currentLevel = 1;
-let levelElem = document.querySelector('#level');
-let levelUpElem = document.querySelector('#level-up');
+let levelElem = document.querySelector("#level");
+let levelUpElem = document.querySelector("#level-up");
 let levelUpId = null;
 
 const COLOR_SET = [
-    '#1726f3',
-    '#df2736',
-    '#38a73b',
-    '#fc902c',
-    '#6f4af7',
-    '#ffd151',
-    '#1c2491',
-    '#9c9c9c'
+  "#1726f3",
+  "#df2736",
+  "#38a73b",
+  "#fc902c",
+  "#6f4af7",
+  "#ffd151",
+  "#1c2491",
+  "#9c9c9c",
 ];
 
-const soundElem = document.querySelector('#sound');
-const bgmElem = document.querySelector('#bgm');
+const soundElem = document.querySelector("#sound");
+const bgmElem = document.querySelector("#bgm");
 let allowSound = true;
 
 let timeForMakingOneLine = 0;
