@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id='canvas' width="800" height="2000"></canvas>
+  <script>
+    const canvas = document.getElementById('canvas');
+
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'gray';
+
+    const borderWidth = 5;
+    const blockSize = 30;
+
+    for (let x = 0; x < 12; x++) {
+      for (let y = 0; y < 24; y++) {
+        ctx.fillRect(
+          borderWidth * x + blockSize * x,
+          borderWidth * y + blockSize * y,
+          blockSize,
+          blockSize
+          );
+          
+        }
+        
+      }
+      
+    const widthBlockCount = 10;
+    const heightBlockCount = 25;
+    
+    let stackedBlock = new Array(widthBlockCount);
+    let controlBlock = new Array(widthBlockCount);
+    
+    initBlockArray(stackedBlock);
+    initBlockArray(controlBlock);
+    
+    function initBlockArray(blockArray) {
+      for (let x = 0; x < widthBlockCount; x++) {
+        blockArray[x] = new Array(heightBlockCount);
+      }
+      
+      for (let x = 0; x < widthBlockCount; x++) {
+        for (let y = 0; y < heightBlockCount; y++) {
+          blockArray[x][y] = false;          
+        };        
+      }
+    }
+      
+    function drawBlocks() {
+      for (let x = 0; x < widthBlockCount; x++) {
+        for (let y = 0; y < heightBlockCount; y++) {
+          if (stackedBlock[x][y]) {
+            ctx.fillStyle = 'black';
+          } else {
+            ctx.fillStyle = 'gray';
+          }
+          if (controlBlock[x][y]) {
+            ctx.fillStyle = 'blue';
+          }
+          
+          ctx.fillRect(
+            borderWidth * x + blockSize * x,
+            borderWidth * y + blockSize * y,
+            blockSize,
+            blockSize
+          );
+        }
+      }
+    }
+
+    let testButtonOn = false; 
+    let timeId = null; 
+    function onClickTestButton() { 
+      if (testButtonOn) { 
+        clearInterval(timeId); 
+      } else { 
+        timeId = setInterval(flowGravity, 300); 
+      } 
+      
+      testButtonOn = !testButtonOn; 
+    }
+     
+    function flowGravity() { 
+      let collisionCheckTmpArray = copyBlockArray(controlBlock); 
+      if (isCollided(collisionCheckTmpArray, stackedBlock)) { 
+        addBlocksToStackedArray(controlBlock, stackedBlock); 
+        addNewControlBlock(controlBlock); 
+      } else { 
+        controlBlock = collisionCheckTmpArray; 
+      } 
+      ctx.clearRect(0, 0, canvas.width, canvas.height); 
+      drawBlocks(); 
+    }
+
+
+</script>
+</body>
+</html>
