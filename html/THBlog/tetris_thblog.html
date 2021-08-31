@@ -75,7 +75,8 @@
       // curShape에 맞춰서 검은색으로 칠한다. 
       for (var y = 0; y < gamePanel.length; y++) { 
         for (var x = 0; x < gamePanel[y].length; x++) { 
-          if(gamePanel[y][x]){ ctx.fillStyle = gamePanelColor[y][x]; 
+          if(gamePanel[y][x]){ 
+            ctx.fillStyle = gamePanelColor[y][x]; 
             ctx.fillRect(x*20,y*20,19,19); 
           } 
         } 
