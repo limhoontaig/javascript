@@ -9,24 +9,41 @@
 <body>
   <script>
     
-    let dec = 2**64;
+    let dec = 2**11;
     let hex = 8000;
     let bin = 0;
     let octal = 0;
 
     // dec => hex
     hex = dec.toString(16);
+    oct = dec.toString(8);
     console.log(`decimal ${dec} to hex: ${hex}`);
+    console.log(`decimal ${dec} to oct: ${oct}`);
     
     //dec to bin
     bin = dec.toString(2);
     console.log(`decimal ${dec} to binary: ${bin}`);
     
     //hex to dec
-    hex = 'ffff';
+    hex = '0xF842';
     dec = parseInt(hex,16);
+
+    bin = parseInt(hex, 16).toString(2);
     console.log(`hex ${hex} to dec: ${dec}`);
-    
+    console.log(`hex ${hex} to binary: ${bin}`);
+    console.log(`hex.length: ${hex.length}`)
+
+    for (let x = 0; x < hex.length-2; x++) {
+      for (let y = 0; y < hex.length-2; y++) {
+        if (hex & '0x8000'>> (x*(hex.length-2) + y)) {
+          console.log('합집합은 1 true:', '0x8000'>> (x*4 + y) )
+        } else {
+          console.log('합집합은 0 false:', '0x8000'>> (x*4 + y))
+        };
+        
+      }      
+    }
+
     //hex to bin
     bin = parseInt(hex, 16).toString(2);
     console.log(`hex ${hex} to binary: ${bin}`);
