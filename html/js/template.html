@@ -18,8 +18,146 @@
         })
       })
     </script>
+
+
 </head>
 <body> 
   <a href="http://hanbit.co.kr">링크</a>
+  <h1>Emmet Documentation</h1> 
+  <h2>Child: ></h2>
+  <p>You can use > operator to nest elements inside each other:</p> 
+  <p>div>ul/li will produce</p>
+  <blockquote>
+    block quote tag
+  <div>
+    div tag
+    <ul>
+      ul tag
+      <li>li tag</li>
+    </ul>
+  </div>
+  </blockquote>
+
+  <h2>Sibling: +</h2>
+  <p>Use + operator to place elements near each other, on the same level:</p> 
+  <p>div+P+bq will output</p>
+  <div>div tag</div>
+  <p> tag</p>
+  <blockquote>
+    blockquote tag 
+  </blockquote>
+  
+  <h2>Climb up: ^</h2>
+  <p>With > operator you're descending down the generated tree and positions of all sibling elements will be resolved against the most deepest element:</p> 
+  <p>div+div>p>span+em will be expanded to</p>
+  <div>div tag</div>
+  <div>
+    div tag
+    <p>p tag<span>span tag</span><em>em tag</em></p>
+  </div>
+  <p>With ^ operator, you can climb one level up the tree and change context where following elements should appear.</p>
+  <p>div+div>p>span+em^bq outpus to</p>
+  <div>div tag</div>
+  <div>
+    div tag
+    <p>p tag<span>span tag</span><em>em tag</em></p>
+    <blockquote>blockquote tag</blockquote>
+  </div>
+  
+  <h2>Multiplication: *</h2>
+  <p>With * operator you can define how many times element should be outputted:</p> 
+  <p>ul>li*5 outputs to</p>
+  <ul>
+    ul tag
+    <li>li tag 1</li>
+    <li>li tag 2</li>
+    <li>li tag 3</li>
+    <li>li tag 4</li>
+    <li>li tag 5</li>
+  </ul>
+  
+  <h2>Grouping: ()</h2>
+  <p>Parenthesises are used by Emmets' power users for grouping subtrees in complex abbreviations:</p> 
+  <p>div>(header>ul>li*2>a)+footer>p expands to</p>
+  <div>
+    div tag
+    <header>
+      header tag
+      <ul>
+        ul tag
+        <li>li tag 1<a href="a.tag">a tag</a></li>
+        <li>li tag 2<a href="a.tag">a tag</a></li>
+      </ul>
+    </header>
+    <footer>
+      footer tag
+      <p>footer p tag</p>
+    </footer>
+  </div>
+  <p>If you're working with browser's DOM, you may think of groups as Document Fragments: each group contains abbreation subtree and all the following elements are inserted at the same level as the first element of group. <br> <br>You can nest groups inside each other and combine them with multiplication * operator.</p>
+  <p>(div>dl>(dt+dd)*3)+footer>p</p>
+  <div>
+    Group div tag
+    <dl>
+      dl tag
+      <dt>Group dt+dd tag 1 of 3</dt>
+      <dd>Group dt+dd tag 1 of 3</dd>
+      <dt>Group dt+dd tag 2 of 3</dt>
+      <dd>Group dt+dd tag 2 of 3</dd>
+      <dt>Group dt+dd tag 3 of 3</dt>
+      <dd>Group dt+dd tag 3 of 3</dd>
+    </dl>
+  </div>
+  <footer>
+    footer tag
+    <p>footer p tag</p>
+  </footer>
+
+  <h1>Attribute operators</h1>
+  <h2>ID and CLASS</h2>
+  <p>in CSS, you use rlem#id and elem.class notation to reach the elements with specified id or class attributes. In Emmet, you can use the very same syntax to <em>add</em> these attributes to specified element:</p>
+  <p>div#header+div.page+div#footer.class1.class2.class3 will outputs</p>
+  <div id="header">div id header tag</div>
+  <div class="page">div class page</div>
+  <div id="footer" class="class1 class2 class3">div id footer class class1 class2 class3 tag</div>
+  
+  <h2>Item numbering: $</h2>
+  <p>With multiplication * operator you can repeat elements, but with $ you can number them. Place $ operator inside element’s name, attribute’s name or attribute’s value to output current number of repeated element:</p>  
+  <p>ul>li.item$*5 outputs to</p>
+  <ul>
+    <li class="item0001">liItem0001</li>
+    <li class="item0002">liItem0002</li>
+    <li class="item0003">liItem0003</li>
+    <li class="item0004">liItem0004</li>
+    <li class="item0005">liItem0005</li>
+  </ul>  
+  <h2>Changing numbering base and direction: @-<rm>(reverse)</rm> after $</h2>
+  <p>ul>li.item$@-*5 outputs to</p>
+  <ul>
+    ul>li.item$@-*5 (reverse)
+    <li class="item5">li item 5</li>
+    <li class="item4">li item 4</li>
+    <li class="item3">li item 3</li>
+    <li class="item2">li item 2</li>
+    <li class="item1">li item 1</li>
+  </ul>
+  <ul>
+    ul>li.item$@*5 (forward)
+    <li class="item1">li item 1</li>
+    <li class="item2">li item 2</li>
+    <li class="item3">li item 3</li>
+    <li class="item4">li item 4</li>
+    <li class="item5">li item 5</li>
+  </ul>
+  <p>To change counter base value, add @N modifier to $:</p>
+  <p>ul>li.item$@3*5 transforms to</p>
+  <ul>
+    <li class="item3">li item 3</li>
+    <li class="item4">li item 4</li>
+    <li class="item5">li item 5</li>
+    <li class="item6">li item 6</li>
+    <li class="item7">li item 7</li>
+  </ul>
+  
 </body>
 </html>
