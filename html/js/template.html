@@ -6,22 +6,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const a = document.querySelector('a')
-        a.addEventListener('click', (event) => {
-          event.currentTarget
-          // event.preventDefault()
-          console.log(a)
-        })
-        a.addEventListener('contextmenu', (event) => {
-          event.preventDefault()
-        })
-      })
+      // document.addEventListener('DOMContentLoaded', () => {
+      //   const a = document.querySelector('a')
+      //   a.addEventListener('click', (event) => {
+      //     event.currentTarget
+      //     // event.preventDefault()
+      //     console.log(a)
+      //   })
+      //   a.addEventListener('contextmenu', (event) => {
+      //     event.preventDefault()
+      //   })
+      // })
     </script>
 
 
 </head>
-<body> 
+<body>
+  <canvas id = 'mainoard'></canvas>
+  <script>
+    const block = [
+      [0,1,0],
+      [0,1,0],
+      [0,1,1]
+    ];
+
+    const randomBlock = {
+      block_set: block,
+      block_set_options:[
+        [{},{},{}],
+        [{},{},{}],
+        [{},{},{}]
+      ]
+    }
+    const nextBlock = {
+      x:0,
+      y:0,
+      shape:randomBlock.block_set,
+      shape_options:randomBlock.block_set_options
+    }
+
+    const currentBlock = nextBlock;
+    function move(block, x,y) {
+      console.log('block.x, block.y: ',block.x, block.y)
+      block.x +=x;
+      block.y +=y;
+      console.log('block:',block)
+      console.log('block.shape:',block.shape)
+      console.log('block.shape:',block.shape_options)
+
+      console.log('block.x, block.y: ',block.x, block.y)
+    }
+
+    const moveBlock = move(currentBlock, 0,-1);
+    console.log('moveBlock:',moveBlock)
+
+    function rotate(block) {
+      block.shape.forEach((row,y) => {
+        console.log(block.shape)
+        for (let x = 0; x < y; x++) {
+          const tempValue = block.shape[x][y];
+          block.shape[x][y] = block.shape[y][x];
+          block.shape[y][x] = tempValue;
+        }
+      });
+      console.log(block.shape)
+      block.shape.forEach((row) => {
+        row.reverse();
+        console.log(block.shape)
+      })
+    }
+
+    rotate(moveBlock);
+
+
+
+  </script>
+  
+
+<!--   
   <a href="http://hanbit.co.kr">링크</a>
   <h1>Emmet Documentation</h1> 
   <h2>Child: ></h2>
@@ -158,6 +220,6 @@
     <li class="item6">li item 6</li>
     <li class="item7">li item 7</li>
   </ul>
-  
+   -->
 </body>
 </html>
