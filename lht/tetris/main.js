@@ -1,5 +1,5 @@
 const canvas = document.getElementById('board');
-const ctx = canvas.getContext('2D');
+let ctx = canvas.getContext('2D');
 
 // Calculate the canvas size using constant
 ctx.canvas.width = COLS * BLOCK_SIZE;
