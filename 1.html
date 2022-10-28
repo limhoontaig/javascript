@@ -1,0 +1,84 @@
+!html
+요즘은 컨테이너로 사용하기에 MySQL을 서버나 VM에 직접 설치할 일이 적지만, 여러 서비스에서 한 대의 MySQL에 동시에 접근해야 하는 구성을 해야하면 단독으로 설치를 하기도 한다.
+
+CentOS에서는 일반적으로 Yum을 이용하여 MySQL설치를 진행하는데 이 방법도 2가지가 존재한다.
+
+CentOS 기본 Repository에서 설치하기
+CentOS의 기본 Repository에서 MySQL이 설치가 가능하다. 명령어 한번으로 매우 편하게 설치를 진행할 수 있다.
+
+<strong><u> sudo yum install mysql-server -y </u></strong>
+
+
+MySQL Repository 등록 후 설치하기
+MySQL 공식문서에 나와있는 방법이다. 버전도 이쪽이 더 최신이긴 하다.
+
+MySQL Repository 설치
+아래 링크에서 Repository 파일을 다운로드 받아야 한다. CentOS 8에 설치해야 하니 Red Hat Enterprise Linux 8을 선택해서 다운로드를 누른다.
+
+MySQL Yum Repository
+
+
+
+위 화면에서 "Download" 버튼을 누르면 아래와 같은 Login 화면이 뜬다.
+
+
+
+맨 아래있는 "No thanks, just start my download."를 마우스 우클릭하여 링크를 복사하자. 복사한 링크를 이용하여 다음과 같이 터미널에서 Yum 명령을 실행시킨다.
+
+sudo yum install -y https://dev.mysql.com/get/mysql80-community-release-el8-1.noarch.rpm
+
+
+위와 같이 수행이 완료되면 Repository가 정상적으로 설치되었는지 아래 명령으로 확인한다.
+
+sudo yum repolist enabled | grep "mysql.*-community.*"
+
+
+기존 MySQL 패키지 비 활성화
+정상적으로 설치를 확인했다면 이 부분이 중요하다. 아까 보았던 기존 CentOS의 Repository의 mysql-server 패키지로 인하여 방금 설치한 Repository의 패키지가 설치가 되지 않는다. 기존 패키지를 Disable한다.
+
+sudo yum module disable mysql
+
+
+MySQL 커뮤니티 설치
+이후, Yum을 이용하여 mysql-community-server 패키지를 설치하면 된다.
+
+sudo yum install mysql-community-server
+
+
+MySQL 시작 및 상태확인
+위에 두 가지 방법 모두 다음과 같이 설치를 확인하면 된다.
+
+MySQL 시작
+sudo systemctl start mysqld
+명령어 수행 결과로 특별한 메시지는 나오지 않는다.
+
+MySQL 상태 확인
+시작 명령어와 마찬가지로 systemctl로 확인하면 된다.
+
+sudo systemctl status mysqld
+
+
+root 패스워드 변경
+초기 패스워드 확인
+Yum을 이용하여 설치하면 자동으로 root 패스워드가 설정된다. 아래 명령으로 임시 패스워드를 찾아낸다.
+
+sudo grep 'temporary password' /var/log/mysqld.log
+
+
+초기 패스워드는 설치할 때 마다 랜덤하게 생성된다. 지금까지 따라한 사람은 나와 다른 패스워드를 얻었을 것이다.
+
+패스워드 변경
+의미도 없고 로그에 남아 있는 패스워드를 계속 쓸 수는 없다. MySQL에 접속해서 패스워드를 바꿔보자
+
+mysql -uroot -p
+
+
+전 단계에서 얻은 초기 패스워드를 입력하면 로그인이 된다. 아래 SQL로 패스워드를 변경한다. 필자는 'Passw0rd12#'으로 설정했다.
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'Passw0rd12#';
+
+
+변경하면 exit로 종료한 후 다시 로그인하여 정상적으로 반영되었는지 확인한다.
+
+마치며...
+최근 MySQL을 공부하기 전에 기본적으로 설치하는 방법부터 알아보았다. 다음 포스트는 언제가 될지 모르지만 누군가에겐 도움이 되었으면 좋겠다.
